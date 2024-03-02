@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: angular-app
+  name: angular-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-app
+  template:
+    metadata:
+      labels:
+        app: angular-app
+    spec:
+      containers:
+      - name: angular-app
+        image: 992382630793.dkr.ecr.ap-south-1.amazonaws.com/nagp-ui:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+# service type loadbalancer       
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: angular-app
+    k8s-app: angular-app
+  name: angular-app
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  type: NodePort
+  selector:
+    app: angular-app

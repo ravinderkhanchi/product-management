@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Product</a>
+          <form class="d-flex" role="search">
+            <input
+              [formControl]="searchControl"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <select
+              [formControl]="selectControl"
+              class="custom-select me-2 mw-2"
+              style="min-width: 150px"
+            >
+              <option *ngFor="let c of category" [value]="c.value">
+                {{ c.name }}
+              </option>
+            </select>
+            <button
+              (click)="searchProduct()"
+              class="btn btn-outline-success"
+              type="button"
+            >
+              Search
+            </button>
+          </form>
+          <div>
+            <button type="button" class="btn btn-default btn-md">
+              <b> <i class="bi bi-cart"></i> </b>
+            </button>
+            <button type="button" class="btn btn-default btn-md" (click)="logoutUser()">
+              <b> Logout </b>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col-12 col-md-4" *ngFor="let product of productsData">
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://source.unsplash.com/random/200x200?sig=1"
+              class="card-img-top"
+              alt="Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">
+                Price: <s>{{ product.price }}</s>
+                {{ product.priceWithDiscount }}
+              </p>
+              <button type="button" class="btn btn-primary btn-md" (click)="productDetail(product)">
+                <b> Show Detail </b>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+
+pipeline {
+    agent any
+    environment {
+        registry = "992382630793.dkr.ecr.ap-south-1.amazonaws.com/nagp-ui"
+    }
+   
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/ravinderkhanchi/product-management']]])     
+            }
+        }
+      stage ('Build') {
+          steps {
+            sh "npm install"
+            sh "node_modules/.bin/ng build --configuration production"
+            }
+      }
+
+      stage('Upload to S3') {
+              steps {
+                  withAWS(region:'ap-south-1',credentials:'aws') {
+                  sh 'echo "Uploading content with AWS creds"'
+            s3Upload(bucket:"nagp-ui", path:'', includePathPattern:'**/*', workingDir:'dist/product-management/browser',pathStyleAccessEnabled: true, payloadSigningEnabled: true)
+                  }
+              }
+         }
+   
+    }
+}

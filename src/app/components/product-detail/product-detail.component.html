@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Product</a>
+          <div>
+            <button type="button" class="btn btn-default btn-md">
+              <b> <i class="bi bi-cart"></i> </b>
+            </button>
+            <button type="button" class="btn btn-default btn-md" (click)="logoutUser()">
+              <b> Logout </b>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://source.unsplash.com/random/200x200?sig=1"
+              class="card-img-top"
+              alt="Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">
+                Price: <s>{{ product.price }}</s>
+                {{ product.priceWithDiscount }}
+              </p>
+              <p class="card-text">
+                Description:
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

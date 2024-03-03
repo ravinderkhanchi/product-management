@@ -1,1 +1,1 @@
-export const COGNITO_URL = 'https://nagp.auth.ap-south-1.amazoncognito.com/login?client_id=8mkrf613c98078hlb7j9elo4l&response_type=token&scope=email+openid&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fui%2F';
+export const COGNITO_URL = 'https://nagp.auth.ap-south-1.amazoncognito.com/oauth2/authorize?client_id=8mkrf613c98078hlb7j9elo4l&response_type=token&scope=email+openid+profile&redirect_uri=https%3A%2F%2Fd2yb9wvc39yrrc.cloudfront.net%2Fui%2F';

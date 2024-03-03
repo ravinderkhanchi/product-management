@@ -9,7 +9,7 @@
               <b> <i class="bi bi-cart"></i> </b>
             </button>
             <button type="button" class="btn btn-default btn-md" (click)="logoutUser()">
-              <b> Logout </b>
+              <b> Logout, Ravinder </b>
             </button>
           </div>
         </div>
@@ -26,10 +26,10 @@
               <h5 class="card-title">{{ product.name }}</h5>
               <p class="card-text">
                 Price: <s>{{ product.price }}</s>
-                {{ product.priceWithDiscount }}
+                {{ product.discountedPrice }}
               </p>
               <p class="card-text">
-                Description:
+                Description: {{ product.id }}
               </p>
             </div>
           </div>

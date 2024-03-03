@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { COGNITO_URL } from '../../constant/app-constants';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,8 +16,8 @@ export class ProductDetailComponent {
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      const productId = params.get("id");
+    this.activatedRoute.params.subscribe(params => {
+      const productId = params["id"];
       this.productService.getProductDetail(productId).subscribe((product: any) => {
         console.log(product);
         this.product = product;
@@ -26,6 +27,6 @@ export class ProductDetailComponent {
 
   logoutUser() {
     localStorage.removeItem('token');
-    window.location.href = "https://nagp.auth.ap-south-1.amazoncognito.com/logout?client_id=4rpandicearfs91f6t0nbpfmt&logout_uri=http%3A%2F%2Flocalhost%3A4200";
+    window.location.href = COGNITO_URL;
 }
 }

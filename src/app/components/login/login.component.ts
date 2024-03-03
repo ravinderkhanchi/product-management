@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { COGNITO_URL } from '../../constant/app-constants';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +15,19 @@ export class LoginComponent {
 
   ngOnInit() {
     this.activateRoute.queryParamMap.subscribe(params => {
-      const token = params.get("code");
+      if(window.location.hash === ''){
+        window.location.href = COGNITO_URL;
+      }
+      const token = window.location.hash.split("#")[1].split("&")[0].split("=")[1];
       if (token) {
         localStorage.setItem('token', token);
         this.router.navigateByUrl("/products");
       } else {
-        window.location.href = "https://nagp.auth.ap-south-1.amazoncognito.com/login?client_id=4rpandicearfs91f6t0nbpfmt&response_type=code&scope=email+openid+phone&redirect_uri=http%3A%2F%2Flocalhost%3A4200";
+        window.location.href = COGNITO_URL;
       }
     })
   }
   loginUser() {
-    window.location.href = "https://nagp.auth.ap-south-1.amazoncognito.com/login?client_id=4rpandicearfs91f6t0nbpfmt&response_type=code&scope=email+openid+phone&redirect_uri=http%3A%2F%2Flocalhost%3A4200";
+    window.location.href = COGNITO_URL;
   }
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-var url = 'http://localhost:8085/ps/products';
+var url = 'https://uci13q2uf1.execute-api.ap-south-1.amazonaws.com/dev/products';
 
 @Injectable({
   providedIn: 'root',

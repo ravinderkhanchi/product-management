@@ -27,6 +27,6 @@ export class ProductDetailComponent {
 
   logoutUser() {
     //localStorage.removeItem('token');
-    window.location.href = COGNITO_URL;
+   // window.location.href = COGNITO_URL;
 }
 }

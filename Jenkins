@@ -22,6 +22,7 @@ pipeline {
               steps {
                   withAWS(region:'ap-south-1',credentials:'aws') {
                   sh 'echo "Uploading content with AWS creds"'
+                  s3Delete(bucket:'nagp-ui', path:'')
             s3Upload(bucket:"nagp-ui", path:'', includePathPattern:'**/*', workingDir:'dist/product-management/browser',pathStyleAccessEnabled: true, payloadSigningEnabled: true)
                   }
               }

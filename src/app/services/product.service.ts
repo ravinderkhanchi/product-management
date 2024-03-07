@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-var url = 'https://8u0q2c6aa5.execute-api.ap-south-1.amazonaws.com/dev/products';
+var url = 'https://8xwda4hwlc.execute-api.ap-south-1.amazonaws.com/dev/products';
 
 @Injectable({
   providedIn: 'root',
